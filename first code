@@ -1,0 +1,6 @@
+a,m,d,n=map(int,input().split())
+s=a
+for i in range (n-1):
+# i와 range의 수가 같아지면 루프를 시작전에 탈출한다.
+  s=s*m+d
+print(s)
