@@ -1,0 +1,21 @@
+첫번째 방법
+i가 열 갯수, j가 행 갯수
+d=[]
+for i in range(10):
+  d.append([])
+  for j in range(10):
+    d[i].append(0)
+    
+    
+두번째 방법
+i가 열 갯수
+j가 행 갯수
+p=[[0 for i in range(20)] for j in range(20)]
+
+나타내기
+
+for i in range(20):
+  for j in range(20):
+    print(p[x][y],end=' ')
+  print()
+x가 행 y가 열
