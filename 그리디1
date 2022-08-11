@@ -1,0 +1,8 @@
+money=int(input())
+a=[500 ,100,50,10]
+n=0
+for i in a:
+  n+=money//i
+  money%=i
+
+print(n)
