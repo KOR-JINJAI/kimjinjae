@@ -1,0 +1,12 @@
+def solve(a):             %% a 가 외부에서 받은 값
+  total = 0
+  for x in a:             %% a 리스트에 있는 모든 항(a[0],a[1],a[2]...=x0,x1,x2...)을
+    total+=x              %% total에 하나하나 더해준다.
+  return total           %%여기까지가 함수정의. total을 반환
+
+k=[3, 4, 5, 6]          %%k라는 리스트를
+y=solve(k)                %%solve함수에 넣었으니 리스트의 모든 항을 더한 값이 y로 반환된다.
+
+print(y)
+
+for x in A는 함수에서만 가능한지는 모르겠으나, A라는 리스트의 모든 항들을 순서대로 반복문하게해줌.
