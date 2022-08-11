@@ -19,3 +19,13 @@ for i in range(20):
     print(p[x][y],end=' ')
   print()
 x가 행 y가 열
+
+
+---------------------------예제
+n,m=map(int,input().split()) n,m 행,열
+p=[[0 for i in range(m)] for j in range(n)] m,n 열 행(제일 속괄호가 열, 제일 대괄호가 행)
+
+for i in range(n):   행
+  for j in range(m):  열
+    print(p[i][j],end=' ')    [행][열]
+  print()
