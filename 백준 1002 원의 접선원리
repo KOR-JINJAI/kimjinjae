@@ -1,0 +1,13 @@
+import math % math함수 덕에 sqrt 가능.
+n=int(input())
+for i in range(n):
+  x1,y1,r1,x2,y2,r2=map(int,input().split())
+  distance= math.sqrt((x1-x2)**2+(y1-y2)**2) % 원의중심거리 구하기
+  if distance==0 and r1==r2 : %원의중심 같고, 반지름 같으면 무한히 겹침
+    print(-1)
+  elif distance==abs(r1-r2) or distance==r1+r2 : %원의 중심거리가, 두 반지름의 합이나 차와 일치하면 1점에서 만남
+    print(1)
+  elif abs(r1-r2)<distance<r1+r2 : %원의 중심거리가, 두 반지름의 합보다는 작으면서, 차보다는 크면 2점에서 만남. 특이사항 : 파이썬은 &&가 필요없다는사실~
+    print(2)
+  else:
+    print(0)
