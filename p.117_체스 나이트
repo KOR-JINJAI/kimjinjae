@@ -1,0 +1,23 @@
+#a1 a=column, 1=row
+'''
+문자열 input은 그 자체로 list이다.
+data=input(), input에 a1을 치면,
+data[0]=a, data[1]=1
+
+- ord함수 : 문자-> 유니코드'정수'
+int(ord('a'))=97(integer), ord 안에 써도 ''(작.따 필수)
+- chr함수 : 정수-> 유니코드'문자'
+주의 : 둘다 list 아님!
+'''
+input_data=input()
+row=int(input_data[1])
+column=int(ord(input_data[0]))-int(ord('a'))+1
+steps=[(-2,1),(-2,-1),(2,1),(2,-1),(1,2),(1,-2),(-1,2),(-1,-2)]
+count=0
+for step in steps:
+  n_x=row+step[0]
+  n_y=column+step[1]
+  if n_x>=1 and n_y>=1 and n_x<=8 and n_y<=8:
+    count+=1
+
+print(count)
