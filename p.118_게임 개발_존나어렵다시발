@@ -1,0 +1,47 @@
+n,m=map(int,input().split())
+d=[[0]*m for _ in range(n)] #열-행 >> m-n
+x,y,direction=map(int,input().split())
+d[x][y] = 1
+
+array =[]
+for i in range(n):
+  array.append(list(map(int,input().split())))
+
+#북 동 남 서
+dx=[-1,0,1,0]
+dy=[0,1,0,-1]
+
+#좌회전 함수선언
+def turn_left():
+  global direction #함수 외부 변수(전역 변수) direction을 끌어온다.
+  direction-=1
+  if direction==-1:
+    direction=3
+
+count = 1
+turn_time=0
+while True:
+  turn_left() #왼쪽으로 회전
+  nx=x+dx[direction] #회전 후 이동
+  ny=y+dy[direction] #회전 후 이동
+  if d[nx][ny] ==0 and array[nx][ny]==0:
+    d[nx][ny]=1
+    x=nx
+    y=ny
+    count+=1
+    turn_time=0
+    continue
+  else:
+    turn_time+=1
+
+  if turn_time ==4:
+    nx=x-dx[direction]
+    ny=y-dy[direction]
+    if array[nx][ny]==0:
+      x=nx
+      y=ny
+    else:
+      break
+    turn_time=0
+
+print(count)
