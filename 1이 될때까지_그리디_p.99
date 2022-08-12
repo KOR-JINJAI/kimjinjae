@@ -1,3 +1,4 @@
+%%my sol
 n,k=map(int,input().split())
 count=0
 while True:
@@ -13,3 +14,19 @@ while True:
       break
 
 print(count)
+
+%% standard sol
+n, k = map(int, input().split())
+result =0
+while n >=k:
+  while n%k!=0:
+    n-=1
+    result+=1
+  n//=k % n/k의 몫을 n에 넣는다.
+  result+=1
+
+while n>1:
+  n-=1
+  result+=1
+
+print(result)
