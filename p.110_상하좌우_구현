@@ -1,0 +1,21 @@
+n=int(input())
+x,y=1,1
+plans=input().split()
+
+#아래 세가지를 함께 잘 묶는 것이 KEY POINT
+dx=[0,0,-1,1]
+dy=[-1,1,0,0]
+move_types=['L','R','U','D']
+##--------------------------------------
+
+for plan in plans:
+  for i in range(len(move_types)):
+    if plan == move_types[i]:
+      nx=x+dx[i] #newx=x+deltax[i]
+      ny=y+dy[i]
+
+  if nx<1 or ny <1 or nx>n or ny>n:
+    continue #if문이 성립시 바로 직후 행(19행)의 코드를 건너뜀.
+  x,y=nx,ny
+
+print(x,y)
