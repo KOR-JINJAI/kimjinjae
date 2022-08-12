@@ -1,3 +1,4 @@
+import math
 n,m=map(int,input().split())
 x,y,d=map(int,input().split()) #d=direction
 fp=[[0]*m for _ in range(n)] #Footprint
@@ -11,11 +12,11 @@ dy=[0,1,0,-1]
 count=0
 tc=0 #turncount
 
-def tl() #tl=turn left
-global d
-d-=1
-if d==-1:
-  d=3
+def tl(): #tl=turn left
+    global d
+    d-=1
+    if d==-1:
+        d=3
 
 while True:
   tl()
@@ -24,4 +25,27 @@ while True:
   direction=0, dx[0]=-1,dy[0]=0
 direction의 순서에 맞게, dx와 dy의 순서를 넣으면, direction에 맞는 방향으로
   '''
-  ny=y+dy
+  ny=y+dy[d]
+  if fp[nx][ny]==0 and m[nx][ny]==0:
+      fp[nx][ny]=1
+      x=nx
+      y=ny
+      count+=1
+      tc=0
+      continue
+
+  else:
+      tc+=1
+
+  if tc==4:
+      nx=x-dx[d]
+      ny=y-dy[d]
+      if m[nx][ny]==0:
+          x=nx
+          y=ny
+      else:
+          break
+      tc=0      
+
+print(count)
+
