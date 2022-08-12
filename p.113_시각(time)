@@ -1,0 +1,11 @@
+n=int(input())
+count=0
+for i in range(n+1):
+  for j in range(60):       # 단순히 60 X, range(60) O -> range()를 붙여야, list가 되기 때문에 셀 수 있는 '집합'이 된다.
+    for k in range(60):     # 단순히 60은 integer인데, 이러면 어디서부터 60? 60이 애초에 시작인가? 끝인가?를 모름.
+      if '3' in str(i)+str(j)+str(k):   #range(60)는 range(0,60,1)=range(start<=,<stop,+step)이 생략된 것.
+        count+=1
+
+print (count)
+
+
