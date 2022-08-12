@@ -21,3 +21,19 @@ for step in steps:
     count+=1
 
 print(count)
+
+#--------------------------------------------mysol
+#a1  ->a 열 1 행, a->y,1->x
+
+data=input()
+y=int(ord(data[0]))-int(ord('a'))+1
+x=int(data[1])
+m_list=[(-2,1),(-2,-1),(2,1),(2,-1),(1,2),(1,-2),(-1,2),(-1,-2)]
+count=0
+for m in m_list:
+  n_x=x+m[0] #행
+  n_y=y+m[1]  #열
+  if 1<=n_x<=8 and 1<=n_y<=8:
+    count+=1
+
+print(count)
