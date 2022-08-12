@@ -1,0 +1,27 @@
+n,m=map(int,input().split())
+x,y,d=map(int,input().split()) #d=direction
+fp=[[0]*m for _ in range(n)] #Footprint
+m=[] #map
+for i in range(n):
+  m.append(list(map(int,input().split())))
+
+# 북 동 남 서
+dx=[-1,0,1,0]
+dy=[0,1,0,-1]
+count=0
+tc=0 #turncount
+
+def tl() #tl=turn left
+global d
+d-=1
+if d==-1:
+  d=3
+
+while True:
+  tl()
+  nx=x+dx[d] #dx[i]의 순서는 direction의 순서와 정확히 일치한다.
+  '''
+  direction=0, dx[0]=-1,dy[0]=0
+direction의 순서에 맞게, dx와 dy의 순서를 넣으면, direction에 맞는 방향으로
+  '''
+  ny=y+dy
