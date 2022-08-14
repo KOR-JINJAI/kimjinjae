@@ -18,3 +18,4 @@ while True:
 
 print(len(comda))
 
+#pop알아보기
