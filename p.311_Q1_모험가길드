@@ -1,0 +1,12 @@
+n=int(input())
+data=list(map(int,input().split()))
+data.sort() #오름차순(0 1 2 3 4 5)정렬
+count=0
+result=0
+for i in data:
+    count+=1
+    if count>=i: #인원수가 가장 큰 공포심보다 크다면
+        result+=1 #그룹을 만들 수 있다.
+        count=0 #그룹을 만들었으면 인원수를 다시 샌다.
+
+print(result)
