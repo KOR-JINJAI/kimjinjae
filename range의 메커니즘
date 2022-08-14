@@ -7,3 +7,5 @@ print(s)
 
 range(a,b,c), a이상,b미만,c의 등차
 range(a) 0에서부터 a미만까지
+
+cf) len은 1부터 n까지 <-> range=[0,n-1]
