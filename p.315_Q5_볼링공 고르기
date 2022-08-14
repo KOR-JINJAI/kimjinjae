@@ -1,0 +1,20 @@
+#my sol
+from itertools import combinations
+# 조합 가져오기
+n,m=map(int,input().split())
+data=list(map(int,input().split()))
+comda=list(combinations(data,2))
+
+
+conf=0
+while True:
+    if comda[conf][0]==comda[conf][1]:
+        del comda[conf]
+        conf-=1
+    if conf==len(comda)-1:
+        break
+#조합 중복 삭제
+    conf+=1
+
+print(len(comda))
+
