@@ -1,0 +1,46 @@
+#mysol
+
+from itertools import combinations
+#조합 라이브러리 불러오기
+n=int(input())
+data=list(map(int,input().split()))
+comda=list()
+for i in range(1,n+1):
+    comda.extend(list(combinations(data,i))) #리스트에 리스트추가, combinations(data,i) data라는 리스트의 i개의 조합을 구한다
+comda_sum=[]
+for i in range(len(comda)):
+    comda_sum.append(sum(comda[i]))
+
+comda_sum=list(map(int,comda_sum))
+comda_sum.sort()
+J=1
+for i in comda_sum:
+    if J==i:
+        J+=1
+
+
+print(J)
+print(comda_sum)
+
+#std sol------------------------------------------------------------------------------------------------------------------------------------
+n=int(input())
+data=list(map(int,input().split()))
+data.sort()
+target=1 #최초 타겟 '1' <- 이 1이란 값이 핵심중의 핵심!
+for i in data:
+    if i>target:
+        break
+    target+=i
+
+print(target)
+
+
+'''
+핵심은 최초설정 목표값인 1 계속해서 갱신되는 목표값에 영향을 미친다는 사실
+갱신되는 목표값=(직전 목표값 )+ (추가되는 동전값)인데,
+최초에 목표값이 1로 설정되어있어서,
+갱신되는 목표값이 꾸준하게 (현재 가진 동전으로 만들 수 있는 최댓값)+1이 되게한다.
+
+이후 추가된 동전이 target보다 크게 되면, target은 만들 수 없기에,
+자동으로 target의 값이 만들 수 없는 최초 값이 된다.
+'''
