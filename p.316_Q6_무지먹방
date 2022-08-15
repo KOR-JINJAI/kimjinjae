@@ -1,0 +1,48 @@
+#mysol#1
+
+food_times = list(map(int, input().split()))
+k = int(input())
+count = 0
+result=0
+while count <= k:
+    for i in range(len(food_times)):
+        if count == k:
+            result=i+1
+            break
+        if food_times[i] >= 1:
+            food_times[i] -= 1
+            count += 1
+    if result!=0:
+        break
+
+    if sum(food_times) == 0:
+        result = -1
+        break
+
+print(result)
+
+#mysol #2
+def solution(food_times, k):
+    count = 0
+    answer = 0
+    while count <= k:
+        for i in range(len(food_times)):
+            if sum(food_times) == 0:
+                answer = -1
+                break
+            if food_times[i] >= 1:
+                if count == k:
+                    answer = i + 1
+                    break
+                food_times[i] -= 1
+                count += 1
+        if answer != 0:
+            break
+
+    return answer  # def선언 후 리턴은 한칸 들여쓴다.
+
+food_times = list(map(int, input().split()))
+k = int(input())
+
+result = solution(food_times, k)
+print(result)
