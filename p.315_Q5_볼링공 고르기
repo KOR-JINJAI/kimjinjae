@@ -19,3 +19,28 @@ while True:
 print(len(comda))
 
 #pop알아보기
+
+#std sol
+n,m= map(int,input().split())
+data=list(map(int,input().split()))
+result=0
+basket=[0]*11
+for i in range(len(basket)):
+    for x in data:
+        if x==i:
+            basket[i]+=1
+for i in range(1,len(basket)):
+    n-=basket[i]
+    result+=basket[i]*n
+
+print(result)
+#while문은 조건이 참일때 시행
+'''조합 구하기
+(3,3,3,2,2,2,2,1,1)이 있다고 쳐.
+그러면, 3이 (a,b)조합중에 a에 나오면 b에 나오면 안돼
+3을 a에 넣기로 한 순간, 전체 원소 갯수(9개)에서 3의 갯수(3)를 빼야해.
+그럼 3의 갯수(3)*남은 원소 갯수(6)를 곱하면 (3,b) 갯수가 나와.
+이제 (2,b)를 구할건데, 방법은 같아.
+2의 갯수(4)*(남은 원소 갯수(=전체 갯수-3의갯수-2의갯수)를 하면 (2,b)의 갯수가 나와.
+일케 하면돼.
+'''
