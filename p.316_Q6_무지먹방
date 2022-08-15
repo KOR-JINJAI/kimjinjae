@@ -26,7 +26,7 @@ def solution(food_times, k):
     count = 0
     answer = 0
     while count <= k:
-        for i in range(len(food_times)):
+        for i in range(len(food_times)): #for i in range(len(list)) <-리스트 원소 수를 range에 맞추기 위해 integer로 변환할 때 정석적 방식 len(list)+range(len()) 
             if sum(food_times) == 0:
                 answer = -1
                 break
