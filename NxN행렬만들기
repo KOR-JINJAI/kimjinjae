@@ -29,3 +29,9 @@ for i in range(n):   행
   for j in range(m):  열
     print(p[i][j],end=' ')    [행][열]
   print()
+
+-------------------------------------
+graph=[[]#열for _ in range(3)]#행
+print(graph)
+#[]라는 1열짜리 원소를 3행 만든다는 뜻
+#가장 안의 대괄호[]=열, 밖=행
