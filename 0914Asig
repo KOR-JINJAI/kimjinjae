@@ -1,0 +1,14 @@
+human=['Alice','Bob','Chalie']
+for idx,i in enumerate(human):
+    print(idx+1,'등은',i,'입니다.')
+d={'Alice':83,'Bob':70,'Chalie':91}
+for i in d:
+    if d[i]>=90:
+        print(i,'의 성적은 A 입니다.')
+    elif d[i]>=80:
+        print(i,'의 성적은 B 입니다.')
+    elif d[i]>=70:
+        print(i,'의 성적은 C 입니다.')
+    else:
+        print(i,'의 성적은 F 입니다.')
+print('201721160 김진재')
