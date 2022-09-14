@@ -1,0 +1,126 @@
+#%% 셀형태 실행 ctrl + enter로 진행
+
+#integer (정수)
+print(3)
+print(type(3)) # prints(<class'int'>)
+x=3
+print(x)
+print(x+1)
+print(x-1)
+print(x+1)
+print(x*2)
+print(x**2)
+x+=1
+print(x)
+x*=2
+print(x)
+y=2.5 # y's class = float(실수)
+t=True
+f=False
+print(type(t)) # t's class is bool(boolean=true&false)
+
+print(t or f) # 둘 중 하나라도 참이면 '참(TRUE)'
+
+#%%3.string(문자열)
+h='hello'
+w="world"
+print(h)
+print(type(h)) # str=string의 약
+print(len(h)) #hello 문자 5개 -> len(h)=5
+hw=h+' '+w
+print(hw)
+hw2022 = '%s %s %d' % (h,w,2022)#%s= string %d= integer <= s,s,d에 (h,w,2022), 문자열 만드는방법
+print(hw2022)
+
+#%%4.list
+xs=[3,1,2]
+print(xs)
+print(type(xs))
+#indexing 하는법(index= 숫자뺴내기)
+print(xs[0])
+
+#print(xs[3]) = index error (index길이 초과)
+print(xs[-1]) #뒤에서 첫번쨰 [3,1,2]중에 2
+xs[2]='cat'
+print(xs)
+print(type(xs))
+xs.append('dog') #요소추가
+print(xs)
+x=xs.pop() #맨 뒤에거 꺼내기
+print(x,xs)
+nums=list(range(5)) #5칸짜리 list, 0,1,2,3,4
+print(nums)
+print(nums[1:3]) #1<=x<3
+print(nums[1:]) #1에서 끝까지
+print(nums[:3]) #3 미만까지
+print(nums[:-1]) #4 미만까지 = 3이하
+nums[2:4]=[8,9,10]
+print(nums)
+
+#%%5. list & for
+animals = ['cat','dog','monkey']
+for i in animals:
+    print(i)
+for idx, i in enumerate(animals):
+    print(idx, i)# enumerate = 인덱스번호도 표기
+    
+for idx, i in enumerate(animals):
+    print('%d %s'%(idx,i))
+
+for i in range(10): # 0<=i<10
+    print(i)
+#%% list range
+nums = list (range(5)) #길이 5짜리 리스트
+print(nums)
+squares =[]
+for x in nums:
+    squares.append(x**2)
+print(squares)
+A = [x **2 for x in nums]
+print(A)
+
+#%% If statement
+money= 1000
+if money >= 3000:
+    print('Take a taxi')
+else:
+    print("walk")
+
+nums=list(range(5))
+even_squares=[x**2for x in nums if x%2==0] #list의 원소 x가 짝수이면, squares 리스트에 담는다. = 짝수제곱
+print(even_squares)
+
+#%% 7.Dictionaries :cat을 치면 4가 나오고, spider를 치면 8이 나온다.
+d= {'cat':4,'dog':4,'spider':8}
+print(d)
+print(type(d))
+print(d['spider'])
+
+print('cat'in d) # cat이 dictionary에 있는지
+d['fish']=0
+print(d)
+print(d.get('monkey','N/A')) #dictionary에 monkey가 있으면 불러오고, 없으면 N/A를 반환하라
+print(d.get('monkey','3'))
+
+##for문 dictionary
+d={'person':2,'cat':4,'spider':8}
+for animal in d: # animal에는 'person, cat, spider과같은 key값이 반환되고
+    legs=d[animal] #d[animal]에 d안에 key값이 들어가서, 숫자로 반환되고, 그것이 다리 갯수가됨.
+    print(animal,legs)
+
+for animal, legs in d.items(): #.item함수로 key(문자)와 value(숫자)를 한번에 반환
+    print(animal,legs)
+    
+#%% Set :중복허용 x
+animals={'cat','dog'}
+print(animals)
+print(type(animals))
+
+#%% tuple 튜플 : 딕셔너리의 key값으로 사용가능
+t=(1,3)
+print(t)
+print(type(t))
+
+
+
+
