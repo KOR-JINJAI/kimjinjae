@@ -1,0 +1,155 @@
+import tensorflow as tf
+import numpy as np
+import matplotlib.pyplot as plt
+
+tf.random.set_seed(0)
+print('--Data')
+x_data=np.array([ # x1,x2,x3는 퀴즈1,퀴즈2,중간고사
+    [73,80,75],
+    [93,88,93],
+    [89, 91, 90], #행의 수는 학생수 (5명)
+    [96, 98, 100],
+    [73, 66 ,70],
+    ], dtype=np.float32)
+y_data= np.array([ #y는 기말고사
+    [152],
+    [185],
+    [180],
+    [196],
+    [142]
+    ],dtype=np.float32)
+print(x_data.shape)
+print(y_data.shape)
+
+plt.subplot(121)
+plt.plot(x_data)
+plt.legend(['x1','x2','x3'])
+plt.subplot(122)
+plt.plot(y_data)
+plt.title('y')
+plt.show()
+
+#%% 다변수선형회기 모델
+print('--Hypothesis')
+W=tf.Variable(tf.random.normal((3,1))) #정규분포화시키기,
+#W=tf.Variable(tf.random.normal((3,1),mean=1,stddev=2)) #정규분포화시키기, 평균과 표준편차수정
+
+b=tf.Variable(tf.random.normal((1,)))
+hypothesis=tf.matmul(x_data,W)+b
+plt.plot(hypothesis)
+plt.plot(y_data)
+plt.legend(['model','label'])
+plt.show()
+
+#%% optimizer & cost
+print('--optimizer & cost')
+optimizer=tf.keras.optimizers.SGD(learning_rate=0.00001) # tf.keras.optimizers의 역할 : W,b의 gardient decent값을 저장해둔 함수
+cost=tf.reduce_mean(tf.square(hypothesis-y_data))
+
+print(cost)
+
+W=tf.Variable(tf.random.normal((3,1)))
+b=tf.Variable(tf.random.normal((1,)))
+with tf.GradientTape() as tape:
+    hypothesis = tf.matmul(x_data,W)+b
+    cost= tf.reduce_mean(tf.square(hypothesis-y_data))
+grads=tape.gradient(cost,[W,b])
+print('--Update Parameters')
+print('Previous parameters')
+print('W:',W.numpy().flatten())
+print('b:',b.numpy())
+
+
+optimizer.apply_gradients(grads_and_vars=zip(grads,[W,b])) ##1스텝 실행
+print('Updated parameters')
+print('W:',W.numpy().flatten())
+print('b:',b.numpy())
+
+#%% for 문을 통한 optimizer training
+
+W=tf.Variable(tf.random.normal((3,1)))
+b=tf.Variable(tf.random.normal((1,)))
+optimizer=tf.keras.optimizers.SGD(learning_rate=0.00001) 
+
+for i in range(2000):
+    with tf.GradientTape() as tape:
+        hypothesis = tf.matmul(x_data,W)+b
+        cost= tf.reduce_mean(tf.square(hypothesis-y_data))
+        grads=tape.gradient(cost,[W,b])
+        optimizer.apply_gradients(grads_and_vars=zip(grads,[W,b]))
+        if (i+1) %10==0:
+            print("epoch: %d\tcost: %10.6f"%(i+1,cost))
+
+print('W: ',W.numpy().flatten()) #faltten()으로 열백터를 행백터로 변환
+print('b: ',b.numpy())
+
+plt.plot(hypothesis)
+plt.plot(y_data)
+plt.legend(['model','label'])
+plt.show()
+#결과값의 cost가 매번 다른 이유 : tf.random.normal(3,1)이 랜덤으로 바꾸기 떄문에.
+#코스트는 
+
+#%% 예측하기 (prediction)
+
+print('--Prediction')
+def predict(x):
+    return(tf.matmul(x,W)+b).numpy()
+
+print('Prediction results\n',predict(x_data))
+print('Ground Truth\n', y_data)
+new_data=[[89.,95.,92.],[75,68.,83.]]
+print('--new data prediction')
+print(predict(new_data).flatten())
+
+
+
+#%%
+data=np.array([
+    [73,80,75,152],
+    [93,88,93,185],
+    [89,91,90,180],
+    [96,98,100,196],
+    [73,66,70,142]
+     ],dtype=np.float32)
+
+x_data=data[:,0:3]
+print(x_data)
+y_data= data[:,[3]]
+print(y_data)
+W=tf.Variable(tf.random.normal((3,1)))
+b=tf.Variable(tf.random.normal((1,)))
+optimizer=tf.keras.optimizers.SGD(learning_rate=0.0000454) 
+print(W.numpy())
+print(b.numpy())
+
+for i in range(3000):
+    with tf.GradientTape() as tape:
+        hypothesis = tf.matmul(x_data,W)+b
+        cost= tf.reduce_mean(tf.square(hypothesis-y_data))
+        grads=tape.gradient(cost,[W,b])
+        optimizer.apply_gradients(grads_and_vars=zip(grads,[W,b]))
+        if (i+1) %10==0:
+            print("epoch: %d\tcost: %10.6f"%(i+1,cost))
+
+print('W: ',W.numpy().flatten()) #faltten()으로 열백터를 행백터로 변환
+print('b: ',b.numpy())
+
+plt.plot(hypothesis)
+plt.plot(y_data)
+plt.legend(['model','label'])
+plt.show()
+
+print('--Prediction')
+def predict(x):
+    return(tf.matmul(x,W)+b).numpy()
+
+print('Prediction results\n',predict(x_data))
+print('Ground Truth\n', y_data)
+x_test=[[70.,60.,50.]] ## W값이 실수라서 70.과같이 닷 필수
+print('--new data prediction')
+print(predict(x_test).flatten())
+
+
+
+print('201721160 김진재')
